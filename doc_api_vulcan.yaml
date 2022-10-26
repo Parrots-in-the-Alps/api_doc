@@ -1,0 +1,51 @@
+---
+openapi: 3.0.0
+info:
+  title: Swagger Vulcan
+  description: "C'est une api \n"
+  contact:
+    email: theo.colombel@le-campus-numerique.fr
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/THEOCOLOMBEL/api-vulcan/1.0.0
+  description: SwaggerHub API Auto Mocking
+tags:
+- name: rooms
+  description: Everything about the hotel rooms
+- name: backoffice
+  description: Access and modifiy ever ything on the landing page
+paths:
+  /pet:
+    put:
+      tags:
+      - pet
+      summary: Update an existing pet
+      operationId: updatePet
+      requestBody:
+        $ref: '#/components/requestBodies/Pet'
+      responses:
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Pet not found
+        "405":
+          description: Validation exception
+      security:
+      - petstore_auth:
+        - write:pets
+        - read:pets
+    post:
+      tags:
+      - pet
+      summary: Add a new pet to the store
+      operationId: addPet
+      requestBody:
+        $ref: '#/components/requestBodies/Pet'
+      responses:
+        "405":
+          description: Invalid input
+      security:
+      - petstore_auth:
+        - write:pets
+        - read:pets
+components: {}
