@@ -43,6 +43,8 @@ components:
           type: integer
         name: 
           type: string
+        image:
+          type: string
         description:
           type: string
         price:
@@ -51,15 +53,107 @@ components:
           type: string
         personPerRoom:
           type: integer
+    News:
+      type: object
+      properties:
+        id:
+          type: integer
+        title: 
+          type: string
+        image:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+    Advantages:
+      type: object
+      properties:
+        id:
+          type: integer
+        title: 
+          type: string
+        icon:
+          type: string
+        description:
+          type: string
+    Reviews:
+      type: object
+      properties:
+        id:
+          type: integer
+        title: 
+          type: string
+        description:
+          type: string
+        rating:
+          type: integer
+        username:
+          type: string
+        userAvatar:
+          type: string
+    Banner:
+      type: object
+      properties:
+        id:
+          type: integer
+        image:
+          type: string
+    FooterLinks:
+      type: object
+      properties:
+        id:
+          type: integer
+        links:
+          type: array
+    Video:
+      type: object
+      properties:
+        id:
+          type: integer
+        link:
+          type: string
   requestBodies:
     Room:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Room'
-        application/xml:
+      required: true
+    News:
+      content:
+        application/json:
           schema:
-            $ref: '#/components/schemas/Room'
-      description: Pet object that needs to be added to the store
-    
+            $ref: '#/components/schemas/News'
+      required: true
+    Banner:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Banner'
+      required: true
+    Advantages:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Advantages'
+      required: true
+    Reviews:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Reviews'
+      required: true
+    FooterLinks:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FooterLinks'
+      required: true
+    Video:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Video'
+      required: true
         
