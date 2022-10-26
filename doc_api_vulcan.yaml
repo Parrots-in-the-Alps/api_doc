@@ -15,25 +15,188 @@ tags:
 - name: BackOffice
   description: Access and modifiy every thing on the landing page
 paths:
-  /room/{id}/update:
-    put:
+  /delete/rooms:
+    delete:
       tags:
       - BackOffice
-      summary: Update an existing room
-      operationId: updatePet
+      summary: Delete an all rooms
       requestBody:
         $ref: '#/components/requestBodies/Room'
       responses:
+        "200":
+          description: Rooms delete
+        "404":
+          description: Room not found
+  /delete/room/{id}:
+    delete:
+      tags:
+      - BackOffice
+      summary: Delete an existing room
+      requestBody:
+        $ref: '#/components/requestBodies/Room'
+      responses:
+        "200":
+          description: Room delete
         "400":
           description: Invalid ID supplied
         "404":
-          description: Pet not found
-        "405":
-          description: Validation exception
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+          description: Room not found
+  /delete/news:
+    delete:
+      tags:
+      - BackOffice
+      summary: Delete an all news
+      requestBody:
+        $ref: '#/components/requestBodies/News'
+      responses:
+        "200":
+          description: News delete
+        "404":
+          description: News not found
+  /delete/news/{id}:
+    delete:
+      tags:
+      - BackOffice
+      summary: Delete an existing news
+      requestBody:
+        $ref: '#/components/requestBodies/News'
+      responses:
+        "200":
+          description: News delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: News not found
+  /delete/advantages:
+    delete:
+      tags:
+      - BackOffice
+      summary: Delete an all advantages
+      requestBody:
+        $ref: '#/components/requestBodies/Advantages'
+      responses:
+        "200":
+          description: Advantages delete
+        "404":
+          description: Advantages not found
+  /delete/advantages/{id}:
+    delete:
+      tags:
+      - BackOffice
+      summary: Delete an existing advantages
+      requestBody:
+        $ref: '#/components/requestBodies/Advantages'
+      responses:
+        "200":
+          description: Advantages delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Advantages not found
+  /delete/reviews:
+    delete:
+      tags:
+      - BackOffice
+      summary: Delete an all reviews
+      requestBody:
+        $ref: '#/components/requestBodies/Reviews'
+      responses:
+        "200":
+          description: Reviews delete
+        "404":
+          description: Reviews not found
+  /delete/reviews/{id}:
+    delete:
+      tags:
+      - BackOffice
+      summary: Delete an existing reviews
+      requestBody:
+        $ref: '#/components/requestBodies/Reviews'
+      responses:
+        "200":
+          description: Reviews delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Reviews not found
+  /delete/banner:
+    delete:
+      tags:
+      - BackOffice
+      summary: Delete an all banner
+      requestBody:
+        $ref: '#/components/requestBodies/Banner'
+      responses:
+        "200":
+          description: Banner delete
+        "404":
+          description: Banner not found
+  /delete/banner/{id}:
+    delete:
+      tags:
+      - BackOffice
+      summary: Delete an existing banner
+      requestBody:
+        $ref: '#/components/requestBodies/Banner'
+      responses:
+        "200":
+          description: Banner delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Banner not found
+  /delete/footerLinks:
+    delete:
+      tags:
+      - BackOffice
+      summary: Delete an all footerLinks
+      requestBody:
+        $ref: '#/components/requestBodies/FooterLinks'
+      responses:
+        "200":
+          description: FooterLinks delete
+        "404":
+          description: FooterLinks not found
+  /delete/footerLinks/{id}:
+    delete:
+      tags:
+      - BackOffice
+      summary: Delete an existing footerLinks
+      requestBody:
+        $ref: '#/components/requestBodies/FooterLinks'
+      responses:
+        "200":
+          description: FooterLinks delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: FooterLinks not found
+  /delete/video:
+    delete:
+      tags:
+      - BackOffice
+      summary: Delete an all video
+      requestBody:
+        $ref: '#/components/requestBodies/Video'
+      responses:
+        "200":
+          description: Video delete
+        "404":
+          description: Video not found
+  /delete/video/{id}:
+    delete:
+      tags:
+      - BackOffice
+      summary: Delete an existing video
+      requestBody:
+        $ref: '#/components/requestBodies/Video'
+      responses:
+        "200":
+          description: Video delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Video not found
 components: 
   schemas:
     Room:
