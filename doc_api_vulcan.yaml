@@ -15,25 +15,118 @@ tags:
 - name: BackOffice
   description: Access and modifiy every thing on the landing page
 paths:
-  /room/{id}/update:
-    put:
+  /update/room/{id}:
+    patch:
       tags:
       - BackOffice
       summary: Update an existing room
-      operationId: updatePet
       requestBody:
         $ref: '#/components/requestBodies/Room'
       responses:
         "400":
           description: Invalid ID supplied
         "404":
-          description: Pet not found
+          description: Room not found
         "405":
           description: Validation exception
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+        "200":
+          description: Update Done !
+  /update/news/{id}:
+    patch:
+      tags:
+      - BackOffice
+      summary: Update an existing New
+      requestBody:
+        $ref: '#/components/requestBodies/News'
+      responses:
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: News not found
+        "405":
+          description: Validation exception
+        "200":
+          description: Update Done !
+  /update/reviews/{id}:
+    patch:
+      tags:
+      - BackOffice
+      summary: Update an existing New
+      requestBody:
+        $ref: '#/components/requestBodies/Reviews'
+      responses:
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: review not found
+        "405":
+          description: Validation exception
+        "200":
+          description: Update Done !
+  /update/advantages/{id}:
+    patch:
+      tags:
+      - BackOffice
+      summary: Update an existing Advantage
+      requestBody:
+        $ref: '#/components/requestBodies/Advantages'
+      responses:
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: review not found
+        "405":
+          description: Validation exception
+        "200":
+          description: Update Done !
+  /update/banner/{id}:
+    patch:
+      tags:
+      - BackOffice
+      summary: Update an existing Banner
+      requestBody:
+        $ref: '#/components/requestBodies/Banner'
+      responses:
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Banner not found
+        "405":
+          description: Validation exception
+        "200":
+          description: Update Done !
+  /update/video/{id}:
+    patch:
+      tags:
+      - BackOffice
+      summary: Update an existing Video
+      requestBody:
+        $ref: '#/components/requestBodies/Video'
+      responses:
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Video not found
+        "405":
+          description: Validation exception
+        "200":
+          description: Update Done !
+  /update/footerlinks/{id}:
+    patch:
+      tags:
+      - BackOffice
+      summary: Update an existing footer link
+      requestBody:
+        $ref: '#/components/requestBodies/FooterLinks'
+      responses:
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: footerlink not found
+        "405":
+          description: Validation exception
+        "200":
+          description: Update Done !
 components: 
   schemas:
     Room:
