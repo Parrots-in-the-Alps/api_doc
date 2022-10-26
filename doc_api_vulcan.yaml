@@ -15,25 +15,21 @@ tags:
 - name: BackOffice
   description: Access and modifiy every thing on the landing page
 paths:
-  /room/{id}/update:
-    put:
+  /api/show/rooms:
+    get:
       tags:
       - BackOffice
-      summary: Update an existing room
-      operationId: updatePet
-      requestBody:
-        $ref: '#/components/requestBodies/Room'
+      summary: return ids of all existing rooms
+      #operationId: 
       responses:
+        "200":
+          description: OK
         "400":
           description: Invalid ID supplied
         "404":
           description: Pet not found
         "405":
           description: Validation exception
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
 components: 
   schemas:
     Room:
