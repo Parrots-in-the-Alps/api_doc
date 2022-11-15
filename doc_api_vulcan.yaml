@@ -31,6 +31,11 @@ paths:
       tags:
       - BackOffice
       summary: Delete an all rooms
+  /create/room/{id}:
+    post:
+      tags:
+      - BackOffice
+      summary: Create a new room
       requestBody:
         $ref: '#/components/requestBodies/Room'
       responses:
@@ -532,6 +537,95 @@ paths:
           description: Validation exception
         "200":
           description: Update Done !
+          description: Room created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
+  /create/news/{id}:
+    post:
+      tags:
+      - BackOffice
+      summary: Create a new news
+      requestBody:
+        $ref: '#/components/requestBodies/News'
+      responses:
+        "200":
+          description: news created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
+  /create/advantages/{id}:
+    post:
+      tags:
+      - BackOffice
+      summary: Create a new advantage
+      requestBody:
+        $ref: '#/components/requestBodies/Advantages'
+      responses:
+        "200":
+          description: advantage created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
+  /create/reviews/{id}:
+    post:
+      tags:
+      - BackOffice
+      summary: Create a new review
+      requestBody:
+        $ref: '#/components/requestBodies/Reviews'
+      responses:
+        "200":
+          description: review created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
+  /create/banner/{id}:
+    post:
+      tags:
+      - BackOffice
+      summary: Create a new banner
+      requestBody:
+        $ref: '#/components/requestBodies/Banner'
+      responses:
+        "200":
+          description: banner created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
+  /create/footerLinks/{id}:
+    post:
+      tags:
+      - BackOffice
+      summary: Create a new footer Link
+      requestBody:
+        $ref: '#/components/requestBodies/FooterLinks'
+      responses:
+        "200":
+          description: footer Link created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
+  /create/video/{id}:
+    post:
+      tags:
+      - BackOffice
+      summary: Create a new video
+      requestBody:
+        $ref: '#/components/requestBodies/Video'
+      responses:
+        "200":
+          description: video created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
 components: 
   schemas:
     Room:
