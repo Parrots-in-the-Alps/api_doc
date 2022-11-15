@@ -272,10 +272,6 @@ paths:
           description: Video not found
         "405":
           description: Validation exception
-        "405":
-          description: Validation exception
-        "200":
-          description: Update Done !
   /update/news/{id}:
     patch:
       tags:
@@ -332,7 +328,8 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/Banner'
       responses:
-          description: Rooms delete
+        "200":
+          description: Rooms update
         "404":
           description: Room not found
   /delete/room/{id}:
@@ -455,8 +452,6 @@ paths:
           description: Banner not found
         "405":
           description: Validation exception
-        "200":
-          description: Update Done !
   /update/video/{id}:
     patch:
       tags:
@@ -465,6 +460,14 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/Video'
       responses:
+        "200":
+          description: video update
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: video not found
+        "405":
+          description: Validation exception
   /delete/footerLinks:
     delete:
       tags:
@@ -519,8 +522,6 @@ paths:
           description: Video not found
         "405":
           description: Validation exception
-        "200":
-          description: Update Done !
   /update/footerlinks/{id}:
     patch:
       tags:
@@ -537,11 +538,6 @@ paths:
           description: Validation exception
         "200":
           description: Update Done !
-          description: Room created
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Validation exception
   /create/news/{id}:
     post:
       tags:
@@ -625,401 +621,6 @@ paths:
         "400":
           description: Invalid ID supplied
         "404":
-          description: Validation exception
-components: 
-  schemas:
-    Room:
-      type: object
-      properties:
-        id:
-          type: integer
-        name: 
-          type: string
-        image:
-          type: string
-        description:
-          type: string
-        price:
-          type: integer
-        roomType:
-          type: string
-        personPerRoom:
-          type: integer
-    News:
-      type: object
-      properties:
-        id:
-          type: integer
-        title: 
-          type: string
-        image:
-          type: string
-        description:
-          type: string
-        date:
-          type: string
-    Advantages:
-      type: object
-      properties:
-        id:
-          type: integer
-        title: 
-          type: string
-        icon:
-          type: string
-        description:
-          type: string
-    Reviews:
-      type: object
-      properties:
-        id:
-          type: integer
-        title: 
-          type: string
-        description:
-          type: string
-        rating:
-          type: integer
-        username:
-          type: string
-        userAvatar:
-          type: string
-    Banner:
-      type: object
-      properties:
-        id:
-          type: integer
-        image:
-          type: string
-    FooterLinks:
-      type: object
-      properties:
-        id:
-          type: integer
-        links:
-          type: array
-    Video:
-      type: object
-      properties:
-        id:
-          type: integer
-        link:
-          type: string
-    Hero:
-      type: object
-      properties:
-        id:
-          type: integer
-        image:
-          type: string
-        slogan:
-          type: string
-        image_logo:
-          type: string
-  requestBodies:
-    Room:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Room'
-      required: true
-    News:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/News'
-      required: true
-    Banner:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Banner'
-      required: true
-    Advantages:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Advantages'
-      required: true
-    Reviews:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Reviews'
-      required: true
-    FooterLinks:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/FooterLinks'
-      required: true
-    Video:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Video'
-      required: true
-    Hero:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Hero'
-      required: true ---
-openapi: 3.0.0
-info:
-  title: Swagger Vulcan
-  description: "C'est une api qui à pour but de créer un site d'Hotel avec  tout un backoffice qui permet d'administrer le site via un WYSIWYG \n"
-  contact:
-    email: theo.colombel@le-campus-numerique.fr
-  version: 1.0.0
-servers:
-- url: https://virtserver.swaggerhub.com/THEOCOLOMBEL/api-vulcan/1.0.0
-  description: SwaggerHub API Auto Mocking
-tags:
-- name: Rooms
-  description: Everything about the hotel rooms
-- name: BackOffice
-  description: Access and modifiy every thing on the landing page
-paths:
-  /api/show/rooms:
-    get:
-      tags:
-      - BackOffice
-      summary: return ids of all existing hostel rooms
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Bad request
-        "404":
-          description: Rooms not found
-        "405":
-          description: Validation exception
-  /api/show/news:
-    get:
-      tags:
-      - BackOffice
-      summary: return ids of all existing news
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Bad request
-        "404":
-          description: News not found
-        "405":
-          description: Validation exception
-  /api/show/adantages:
-    get:
-      tags:
-      - BackOffice
-      summary: return ids of all existing hostel advantages
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Bad request
-        "404":
-          description: Advantages not found
-        "405":
-          description: Validation exception
-  /api/show/reviews:
-    get:
-      tags:
-      - BackOffice
-      summary: return ids of all existing customer reviews
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Bad request
-        "404":
-          description: Reviews not found
-        "405":
-          description: Validation exception
-  /api/show/promobanners:
-    get:
-      tags:
-      - BackOffice
-      summary: return ids of all existing promotional banners
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Bad request
-        "404":
-          description: Promotional banners not found
-        "405":
-          description: Validation exception
-  /api/show/footers:
-    get:
-      tags:
-      - BackOffice
-      summary: return ids of all existing page footers
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Bad request
-        "404":
-          description: Page footers not found
-        "405":
-          description: Validation exception
-  /api/show/heroes:
-    get:
-      tags:
-      - BackOffice
-      summary: return ids of all existing page heroes
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Bad request
-        "404":
-          description: Page heroes not found
-        "405":
-          description: Validation exception
-  /api/show/videos:
-    get:
-      tags:
-      - BackOffice
-      summary: return ids of all existing videos
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Bad request
-        "404":
-          description: Videos not found
-        "405":
-          description: Validation exception
-  /api/show/room/{id}:
-    get:
-      tags:
-      - BackOffice
-      summary: return corresponding room record
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Room not found
-        "405":
-          description: Validation exception
-  /api/show/news/{id}:
-    get:
-      tags:
-      - BackOffice
-      summary: return corresponding news record
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: News not found
-        "405":
-          description: Validation exception
-  /api/show/adantage/{id}:
-    get:
-      tags:
-      - BackOffice
-      summary: return return corresponding advantage record
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Advantage not found
-        "405":
-          description: Validation exception
-  /api/show/review/{id}:
-    get:
-      tags:
-      - BackOffice
-      summary: return return corresponding customer review record
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Customer review not found
-        "405":
-          description: Validation exception
-  /api/show/promobanner/{id}:
-    get:
-      tags:
-      - BackOffice
-      summary:  return corresponding promotional banner record
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Promotional banner not found
-        "405":
-          description: Validation exception
-  /api/show/footer/{id}:
-    get:
-      tags:
-      - BackOffice
-      summary: return corresponding page footer record
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Page footer not found
-        "405":
-          description: Validation exception
-  /api/show/hero/{id}:
-    get:
-      tags:
-      - BackOffice
-      summary: return corresponding page hero record
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Page hero not found
-        "405":
-          description: Validation exception
-  /api/show/video/{id}:
-    get:
-      tags:
-      - BackOffice
-      summary: return corresponding video record
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Video not found
-        "405":
           description: Validation exception
 components: 
   schemas:
