@@ -12,30 +12,28 @@ servers:
 tags:
 - name: Rooms
   description: Everything about the hotel rooms
-- name: BackOffice
-  description: Access and modifiy every thing on the landing page
+- name: Reviews
+  description: Everything about the hotel reviews
+- name: Advantages
+  description: Everything about the hotel Advantages
+- name: News
+  description: Everything about the hotel News
+- name: Hero
+  description: Everything about the hotel Hero
+- name: Footer
+  description: Everything about the hotel Footer
+- name: Link
+  description: Everything about the hotel Links
+- name: Promobanner
+  description: Everything about the hotel Promobanner
+- name: Video
+  description: Everything about the hotel Video
 paths:
   /api/show/rooms:
     get:
       tags:
-      - BackOffice
-      summary: return ids of all existing hostel rooms
-      #operationId: 
-  /update/room/{id}:
-    patch:
-      tags:
-      - BackOffice
-      summary: Update an existing room
-  /delete/rooms:
-    delete:
-      tags:
-      - BackOffice
-      summary: Delete an all rooms
-  /create/room/{id}:
-    post:
-      tags:
-      - BackOffice
-      summary: Create a new room
+      - Rooms
+      summary: return all existing hostel rooms
       requestBody:
         $ref: '#/components/requestBodies/Room'
       responses:
@@ -47,10 +45,88 @@ paths:
           description: Rooms not found
         "405":
           description: Validation exception
+  /api/show/room/{id}:
+    get:
+      tags:
+      - Rooms
+      summary: return corresponding room record 
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Room not found
+        "405":
+          description: Validation exception
+  /api/update/room/{id}:
+    patch:
+      tags:
+      - Rooms
+      summary: Update an existing room
+      requestBody:
+        $ref: '#/components/requestBodies/Room'
+      responses:
+        "200":
+          description: Room update !
+        "400":
+          description: Bad request
+        "404":
+          description: Room not found
+        "405":
+          description: Validation exception
+  /api/delete/rooms:
+    delete:
+      tags:
+      - Rooms
+      summary: Delete all rooms
+      requestBody:
+        $ref: '#/components/requestBodies/Room'
+      responses:
+        "200":
+          description: all rooms deleted !
+        "400":
+          description: Bad request
+        "404":
+          description: Rooms not found
+        "405":
+          description: Validation exception
+  /delete/room/{id}:
+    delete:
+      tags:
+      - Rooms
+      summary: Delete an existing room
+      requestBody:
+        $ref: '#/components/requestBodies/Room'
+      responses:
+        "200":
+          description: Room delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Room not found
+        "405":
+          description: Validation exception
+  /api/create/room:
+    post:
+      tags:
+      - Rooms
+      summary: Create a new room
+      requestBody:
+        $ref: '#/components/requestBodies/Room'
+      responses:
+        "200":
+          description: Room created
+        "400":
+          description: Bad request
+        "404":
+          description: Rooms not found
+        "405":
+          description: Validation exception
   /api/show/news:
     get:
       tags:
-      - BackOffice
+      - News
       summary: return ids of all existing news
       #operationId: 
       responses:
@@ -62,10 +138,83 @@ paths:
           description: News not found
         "405":
           description: Validation exception
-  /api/show/adantages:
+  /api/show/news/{id}:
     get:
       tags:
-      - BackOffice
+      - News
+      summary: return corresponding news record
+      #operationId: 
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: News not found
+        "405":
+          description: Validation exception
+  /api/update/news/{id}:
+    patch:
+      tags:
+      - News
+      summary: Update an existing New
+      requestBody:
+        $ref: '#/components/requestBodies/News'
+      responses:
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: News not found
+        "405":
+          description: Validation exception
+        "200":
+          description: Update Done !
+  /api/delete/news:
+    delete:
+      tags:
+      - News
+      summary: Delete all news
+      requestBody:
+        $ref: '#/components/requestBodies/News'
+      responses:
+        "200":
+          description: News delete
+        "404":
+          description: News not found
+        "405":
+          description: Validation exception
+  /api/delete/news/{id}:
+    delete:
+      tags:
+      - News
+      summary: Delete an existing news
+      requestBody:
+        $ref: '#/components/requestBodies/News'
+      responses:
+        "200":
+          description: News delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: News not found
+  /api/create/news:
+    post:
+      tags:
+      - News
+      summary: Create a new news
+      requestBody:
+        $ref: '#/components/requestBodies/News'
+      responses:
+        "200":
+          description: news created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
+  /api/show/advantages:
+    get:
+      tags:
+      - Advantages
       summary: return ids of all existing hostel advantages
       #operationId: 
       responses:
@@ -77,10 +226,81 @@ paths:
           description: Advantages not found
         "405":
           description: Validation exception
+  /api/show/advantages/{id}:
+    get:
+      tags:
+      - Advantages
+      summary: return corresponding advantage record
+      #operationId: 
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Advantage not found
+        "405":
+          description: Validation exception  
+  /api/update/advantages/{id}:
+    patch:
+      tags:
+      - Advantages
+      summary: Update an existing Advantage
+      requestBody:
+        $ref: '#/components/requestBodies/Advantages'
+      responses:
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: review not found
+        "405":
+          description: Validation exception
+        "200":
+          description: Update Done !
+  /api/delete/advantages:
+    delete:
+      tags:
+      - Advantages
+      summary: Delete an all advantages
+      requestBody:
+        $ref: '#/components/requestBodies/Advantages'
+      responses:
+        "200":
+          description: Advantages delete
+        "404":
+          description: Advantages not found
+  /api/delete/advantages/{id}:
+    delete:
+      tags:
+      - Advantages
+      summary: Delete an existing advantages
+      requestBody:
+        $ref: '#/components/requestBodies/Advantages'
+      responses:
+        "200":
+          description: Advantages delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Advantages not found
+  /api/create/advantages:
+    post:
+      tags:
+      - Advantages
+      summary: Create a new advantage
+      requestBody:
+        $ref: '#/components/requestBodies/Advantages'
+      responses:
+        "200":
+          description: advantage created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
   /api/show/reviews:
     get:
       tags:
-      - BackOffice
+      - Reviews
       summary: return ids of all existing customer reviews
       #operationId: 
       responses:
@@ -95,7 +315,7 @@ paths:
   /api/show/promobanners:
     get:
       tags:
-      - BackOffice
+      - Promobanner
       summary: return ids of all existing promotional banners
       #operationId: 
       responses:
@@ -110,7 +330,7 @@ paths:
   /api/show/footers:
     get:
       tags:
-      - BackOffice
+      - Footer
       summary: return ids of all existing page footers
       #operationId: 
       responses:
@@ -150,36 +370,6 @@ paths:
           description: Bad request
         "404":
           description: Videos not found
-        "405":
-          description: Validation exception
-  /api/show/room/{id}:
-    get:
-      tags:
-      - BackOffice
-      summary: return corresponding room record
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Room not found
-        "405":
-          description: Validation exception
-  /api/show/news/{id}:
-    get:
-      tags:
-      - BackOffice
-      summary: return corresponding news record
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: News not found
         "405":
           description: Validation exception
   /api/show/adantage/{id}:
@@ -272,22 +462,6 @@ paths:
           description: Video not found
         "405":
           description: Validation exception
-  /update/news/{id}:
-    patch:
-      tags:
-      - BackOffice
-      summary: Update an existing New
-      requestBody:
-        $ref: '#/components/requestBodies/News'
-      responses:
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: News not found
-        "405":
-          description: Validation exception
-        "200":
-          description: Update Done !
   /update/reviews/{id}:
     patch:
       tags:
@@ -295,22 +469,6 @@ paths:
       summary: Update an existing New
       requestBody:
         $ref: '#/components/requestBodies/Reviews'
-      responses:
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: review not found
-        "405":
-          description: Validation exception
-        "200":
-          description: Update Done !
-  /update/advantages/{id}:
-    patch:
-      tags:
-      - BackOffice
-      summary: Update an existing Advantage
-      requestBody:
-        $ref: '#/components/requestBodies/Advantages'
       responses:
         "400":
           description: Invalid ID supplied
@@ -332,72 +490,6 @@ paths:
           description: Rooms update
         "404":
           description: Room not found
-  /delete/room/{id}:
-    delete:
-      tags:
-      - BackOffice
-      summary: Delete an existing room
-      requestBody:
-        $ref: '#/components/requestBodies/Room'
-      responses:
-        "200":
-          description: Room delete
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Room not found
-  /delete/news:
-    delete:
-      tags:
-      - BackOffice
-      summary: Delete an all news
-      requestBody:
-        $ref: '#/components/requestBodies/News'
-      responses:
-        "200":
-          description: News delete
-        "404":
-          description: News not found
-  /delete/news/{id}:
-    delete:
-      tags:
-      - BackOffice
-      summary: Delete an existing news
-      requestBody:
-        $ref: '#/components/requestBodies/News'
-      responses:
-        "200":
-          description: News delete
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: News not found
-  /delete/advantages:
-    delete:
-      tags:
-      - BackOffice
-      summary: Delete an all advantages
-      requestBody:
-        $ref: '#/components/requestBodies/Advantages'
-      responses:
-        "200":
-          description: Advantages delete
-        "404":
-          description: Advantages not found
-  /delete/advantages/{id}:
-    delete:
-      tags:
-      - BackOffice
-      summary: Delete an existing advantages
-      requestBody:
-        $ref: '#/components/requestBodies/Advantages'
-      responses:
-        "200":
-          description: Advantages delete
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Advantages not found
   /delete/reviews:
     delete:
       tags:
@@ -538,34 +630,6 @@ paths:
           description: Validation exception
         "200":
           description: Update Done !
-  /create/news/{id}:
-    post:
-      tags:
-      - BackOffice
-      summary: Create a new news
-      requestBody:
-        $ref: '#/components/requestBodies/News'
-      responses:
-        "200":
-          description: news created
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Validation exception
-  /create/advantages/{id}:
-    post:
-      tags:
-      - BackOffice
-      summary: Create a new advantage
-      requestBody:
-        $ref: '#/components/requestBodies/Advantages'
-      responses:
-        "200":
-          description: advantage created
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Validation exception
   /create/reviews/{id}:
     post:
       tags:
