@@ -20,14 +20,14 @@ tags:
   description: Everything about the hotel News
 - name: Hero
   description: Everything about the hotel Hero
-- name: Footer
+- name: Footer Links
   description: Everything about the hotel Footer
-- name: Link
-  description: Everything about the hotel Links
-- name: Promobanner
+- name: Promotional banner
   description: Everything about the hotel Promobanner
 - name: Video
   description: Everything about the hotel Video
+- name: CallToAction
+  description: Everything about the hotel CTA
 paths:
   /api/show/rooms:
     get:
@@ -519,6 +519,22 @@ paths:
           description: Page footer not found
         "405":
           description: Validation exception
+  /api/update/footerlink/{id}:
+    patch:
+      tags:
+      - Footer Links
+      summary: Update specified footer link
+      requestBody:
+        $ref: '#/components/requestBodies/FooterLinks'
+      responses:
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: footerlink not found
+        "405":
+          description: Validation exception
+        "200":
+          description: OK
   /api/delete/footerlinks:
     delete:
       tags:
@@ -551,22 +567,6 @@ paths:
           description: FooterLinks not found
         "405":
           description: Validation exception
-  /api/update/footerlink/{id}:
-    patch:
-      tags:
-      - Footer Links
-      summary: Update specified footer link
-      requestBody:
-        $ref: '#/components/requestBodies/FooterLinks'
-      responses:
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: footerlink not found
-        "405":
-          description: Validation exception
-        "200":
-          description: OK
   /api/create/footerlink/:
     post:
       tags:
@@ -615,11 +615,75 @@ paths:
           description: Page hero not found
         "405":
           description: Validation exception
-  /api/create/videos:
+  /api/update/hero/{id}:
+    patch:
+      tags:
+      - Hero
+      summary: update specific hero
+      requestBody:
+        $ref: '#/components/schemas/Hero'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Page hero not found
+        "405":
+          description: Validation exception
+  /api/delete/heroes:
+    delete:
+      tags:
+      - Hero
+      summary: delete all heroes
+      requestBody:
+        $ref: '#/components/schemas/Hero'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Page hero not found
+        "405":
+          description: Validation exception
+  /api/delete/hero/{id}:
+    delete:
+      tags:
+      - Hero
+      summary: delete specific hero
+      requestBody:
+        $ref: '#/components/schemas/Hero'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Page hero not found
+        "405":
+          description: Validation exception
+  /api/create/hero:
+    post:
+      tags:
+      - Hero
+      summary: create a new hero
+      requestBody:
+        $ref: '#/components/schemas/Hero'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Page hero not found
+        "405":
+          description: Validation exception
+  /api/show/videos:
     get:
       tags:
-      - BackOffice
-      summary: return ids of all existing videos
+      - Video
+      summary: return all existing videos
       responses:
         "200":
           description: OK
@@ -632,9 +696,8 @@ paths:
   /api/show/video/{id}:
     get:
       tags:
-      - BackOffice
+      - Video
       summary: return corresponding video record
-      #operationId: 
       responses:
         "200":
           description: OK
@@ -644,10 +707,10 @@ paths:
           description: Video not found
         "405":
           description: Validation exception
-  /update/video/{id}:
+  /api/update/video/{id}:
     patch:
       tags:
-      - BackOffice
+      - Video
       summary: Update an existing Video
       requestBody:
         $ref: '#/components/requestBodies/Video'
@@ -660,10 +723,10 @@ paths:
           description: video not found
         "405":
           description: Validation exception
-  /delete/video:
+  /api/delete/videos:
     delete:
       tags:
-      - BackOffice
+      - Video
       summary: Delete an all video
       requestBody:
         $ref: '#/components/requestBodies/Video'
@@ -672,10 +735,10 @@ paths:
           description: Video delete
         "404":
           description: Video not found
-  /delete/video/{id}:
+  /api/delete/video/{id}:
     delete:
       tags:
-      - BackOffice
+      - Video
       summary: Delete an existing video
       requestBody:
         $ref: '#/components/requestBodies/Video'
@@ -688,16 +751,102 @@ paths:
           description: Video not found
         "405":
           description: Validation exception
-  /create/video/{id}:
+  /api/create/video:
     post:
       tags:
-      - BackOffice
+      - Video
       summary: Create a new video
       requestBody:
         $ref: '#/components/requestBodies/Video'
       responses:
         "200":
           description: video created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
+  /api/show/CallToAction:
+    get:
+      tags:
+      - CallToAction
+      summary: return all existing CallToAction
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: CallToAction not found
+        "405":
+          description: Validation exception
+  /api/show/CallToAction/{id}:
+    get:
+      tags:
+      - CallToAction
+      summary: return corresponding CallToAction record 
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: CallToAction not found
+        "405":
+          description: Validation exception
+  /api/update/CallToAction/{id}:
+    patch:
+      tags:
+      - CallToAction
+      summary: Update an existing CallToAction
+      requestBody:
+        $ref: '#/components/requestBodies/CallToAction'
+      responses:
+        "200":
+          description: CallToAction update
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: CallToAction not found
+        "405":
+          description: Validation exception
+  /api/delete/CallToAction:
+    delete:
+      tags:
+      - CallToAction
+      summary: Delete all CallToActions
+      requestBody:
+        $ref: '#/components/requestBodies/CallToAction'
+      responses:
+        "200":
+          description: CallToAction delete
+        "404":
+          description: CallToAction not found
+  /api/delete/CallToAction/{id}:
+    delete:
+      tags:
+      - CallToAction
+      summary: Delete an existing CallToAction
+      requestBody:
+        $ref: '#/components/requestBodies/CallToAction'
+      responses:
+        "200":
+          description: Video delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Video not found
+        "405":
+          description: Validation exception
+  /api/create/CallToAction:
+    post:
+      tags:
+      - CallToAction
+      summary: Create a new CallToAction
+      requestBody:
+        $ref: '#/components/requestBodies/CallToAction'
+      responses:
+        "200":
+          description: CallToAction created
         "400":
           description: Invalid ID supplied
         "404":
@@ -792,6 +941,15 @@ components:
           type: string
         image_logo:
           type: string
+    CallToAction:
+      type: object
+      properties:
+        id:
+          type: integer
+        action:
+          type: integer
+        title:
+          type: string
   requestBodies:
     Room:
       content:
@@ -840,4 +998,10 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Hero'
+      required: true 
+    CallToAction:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CallToAction'
       required: true 
