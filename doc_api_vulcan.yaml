@@ -128,7 +128,6 @@ paths:
       tags:
       - News
       summary: return ids of all existing news
-      #operationId: 
       responses:
         "200":
           description: OK
@@ -142,8 +141,7 @@ paths:
     get:
       tags:
       - News
-      summary: return corresponding news record
-      #operationId: 
+      summary: return corresponding news record 
       responses:
         "200":
           description: OK
@@ -216,7 +214,6 @@ paths:
       tags:
       - Advantages
       summary: return ids of all existing hostel advantages
-      #operationId: 
       responses:
         "200":
           description: OK
@@ -226,12 +223,11 @@ paths:
           description: Advantages not found
         "405":
           description: Validation exception
-  /api/show/advantages/{id}:
+  /api/show/advantage/{id}:
     get:
       tags:
       - Advantages
-      summary: return corresponding advantage record
-      #operationId: 
+      summary: return corresponding advantage 
       responses:
         "200":
           description: OK
@@ -241,7 +237,7 @@ paths:
           description: Advantage not found
         "405":
           description: Validation exception  
-  /api/update/advantages/{id}:
+  /api/update/advantage/{id}:
     patch:
       tags:
       - Advantages
@@ -269,7 +265,7 @@ paths:
           description: Advantages delete
         "404":
           description: Advantages not found
-  /api/delete/advantages/{id}:
+  /api/delete/advantage/{id}:
     delete:
       tags:
       - Advantages
@@ -283,7 +279,7 @@ paths:
           description: Invalid ID supplied
         "404":
           description: Advantages not found
-  /api/create/advantages:
+  /api/create/advantage:
     post:
       tags:
       - Advantages
@@ -296,13 +292,16 @@ paths:
         "400":
           description: Invalid ID supplied
         "404":
+          description: Reviews not found
+        "405":
           description: Validation exception
   /api/show/reviews:
     get:
       tags:
       - Reviews
-      summary: return ids of all existing customer reviews
-      #operationId: 
+      summary: return all existing customer reviews
+      requestBody:
+        $ref: '#/components/requestBodies/Reviews'
       responses:
         "200":
           description: OK
@@ -312,87 +311,13 @@ paths:
           description: Reviews not found
         "405":
           description: Validation exception
-  /api/show/promobanners:
-    get:
-      tags:
-      - Promobanner
-      summary: return ids of all existing promotional banners
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Bad request
-        "404":
-          description: Promotional banners not found
-        "405":
-          description: Validation exception
-  /api/show/footers:
-    get:
-      tags:
-      - Footer
-      summary: return ids of all existing page footers
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Bad request
-        "404":
-          description: Page footers not found
-        "405":
-          description: Validation exception
-  /api/show/heroes:
-    get:
-      tags:
-      - BackOffice
-      summary: return ids of all existing page heroes
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Bad request
-        "404":
-          description: Page heroes not found
-        "405":
-          description: Validation exception
-  /api/show/videos:
-    get:
-      tags:
-      - BackOffice
-      summary: return ids of all existing videos
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Bad request
-        "404":
-          description: Videos not found
-        "405":
-          description: Validation exception
-  /api/show/adantage/{id}:
-    get:
-      tags:
-      - BackOffice
-      summary: return return corresponding advantage record
-      #operationId: 
-      responses:
-        "200":
-          description: OK
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Advantage not found
-        "405":
-          description: Validation exception
   /api/show/review/{id}:
     get:
       tags:
-      - BackOffice
-      summary: return return corresponding customer review record
-      #operationId: 
+      - Reviews
+      summary: return corresponding customer review record
+      requestBody:
+        $ref: '#/components/requestBodies/Reviews'
       responses:
         "200":
           description: OK
@@ -402,12 +327,93 @@ paths:
           description: Customer review not found
         "405":
           description: Validation exception
+  /api/update/review/{id}:
+    patch:
+      tags:
+      - Reviews
+      summary: Update an existing customer review
+      requestBody:
+        $ref: '#/components/requestBodies/Reviews'
+      responses:
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: review not found
+        "405":
+          description: Validation exception
+        "200":
+          description: Update Done !
+  /api/delete/reviews:
+    delete:
+      tags:
+      - Reviews
+      summary: Delete an all reviews
+      requestBody:
+        $ref: '#/components/requestBodies/Reviews'
+      responses:
+        "200":
+          description: Reviews delete
+        "400":
+          description: Bad request
+        "404":
+          description: Reviews not found
+        "405":
+          description: Validation exception
+  /api/delete/review/{id}:
+    delete:
+      tags:
+      - Reviews
+      summary: Delete an existing customer review
+      requestBody:
+        $ref: '#/components/requestBodies/Reviews'
+      responses:
+        "200":
+          description: Reviews delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Reviews not found
+        "405":
+          description: Validation exception
+  /api/create/review/{id}:
+    post:
+      tags:
+      - Reviews
+      summary: Create a new customer review
+      requestBody:
+        $ref: '#/components/requestBodies/Reviews'
+      responses:
+        "200":
+          description: review created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
+        "405":
+          description: Validation exception
+  /api/show/promobanners:
+    get:
+      tags:
+      - Promotional banner
+      summary: return all existing promotional banners
+      requestBody:
+        $ref: '#/components/requestBodies/Promobanner'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Promotional banners not found
+        "405":
+          description: Validation exception
   /api/show/promobanner/{id}:
     get:
       tags:
-      - BackOffice
-      summary:  return corresponding promotional banner record
-      #operationId: 
+      - Promotional banner
+      summary:  return specified promotional banner 
+      requestBody:
+        $ref: '#/components/requestBodies/Promobanner'
       responses:
         "200":
           description: OK
@@ -417,12 +423,93 @@ paths:
           description: Promotional banner not found
         "405":
           description: Validation exception
-  /api/show/footer/{id}:
+  /api/update/promobanner/{id}:
+    patch:
+      tags:
+      - Promotional banner
+      summary: Update specified promotional banner
+      requestBody:
+        $ref: '#/components/requestBodies/Promobanner'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Promotional banner not found
+        "405":
+          description: Validation exception
+  /api/delete/promobanners:
+    delete:
+      tags:
+      - Promotional banner
+      summary: Delete all promotional banner
+      requestBody:
+        $ref: '#/components/requestBodies/Promobanner'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Promotional banner not found
+        "405":
+          description: Validation exception
+  /api/delete/promobanner/{id}:
+    delete:
+      tags:
+      - Promotional banner
+      summary: Delete specified promotional banner
+      requestBody:
+        $ref: '#/components/requestBodies/Promobanner'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Promotional banner not found
+        "405":
+          description: Validation exception
+  /api/create/promobanner/:
+    post:
+      tags:
+      - Promotional banner
+      summary: Create a new promotional banner
+      requestBody:
+        $ref: '#/components/requestBodies/Promobanner'
+      responses:
+        "200":
+          description: OK :)
+        "400":
+          description: Bad request
+        "404":
+          description: Validation exception
+        "405":
+          description: Validation exception
+  /api/show/footerlinks:
     get:
       tags:
-      - BackOffice
-      summary: return corresponding page footer record
-      #operationId: 
+      - Footer Links
+      summary: return all existing page footer links
+      requestBody:
+        $ref: '#/components/requestBodies/FooterLinks'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Page footers not found
+        "405":
+          description: Validation exception
+  /api/show/footerlink/{id}:
+    get:
+      tags:
+      - Footer Links
+      summary: return specified page footer link
+      requestBody:
+        $ref: '#/components/requestBodies/FooterLinks'
       responses:
         "200":
           description: OK
@@ -432,12 +519,93 @@ paths:
           description: Page footer not found
         "405":
           description: Validation exception
+  /api/delete/footerlinks:
+    delete:
+      tags:
+      - Footer Links
+      summary: Delete an all footer links
+      requestBody:
+        $ref: '#/components/requestBodies/FooterLinks'
+      responses:
+        "200":
+          description: OK :)
+        "400":
+          description: Bad request
+        "404":
+          description: Page footer not found
+        "405":
+          description: Validation exception
+  /api/delete/footerlink/{id}:
+    delete:
+      tags:
+      - Footer Links
+      summary: Delete specified footer Link
+      requestBody:
+        $ref: '#/components/requestBodies/FooterLinks'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: FooterLinks not found
+        "405":
+          description: Validation exception
+  /api/update/footerlink/{id}:
+    patch:
+      tags:
+      - Footer Links
+      summary: Update specified footer link
+      requestBody:
+        $ref: '#/components/requestBodies/FooterLinks'
+      responses:
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: footerlink not found
+        "405":
+          description: Validation exception
+        "200":
+          description: OK
+  /api/create/footerlink/:
+    post:
+      tags:
+      - Footer Links
+      summary: Create a new footer Link
+      requestBody:
+        $ref: '#/components/requestBodies/FooterLinks'
+      responses:
+        "200":
+          description: footer Link created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
+        "405":
+          description: Validation exception
+  /api/show/heroes:
+    get:
+      tags:
+      - Hero
+      summary: return all existing page heroes
+      requestBody:
+        $ref: '#/components/schemas/Hero' 
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Page heroes not found
+        "405":
+          description: Validation exception
   /api/show/hero/{id}:
     get:
       tags:
-      - BackOffice
-      summary: return corresponding page hero record
-      #operationId: 
+      - Hero
+      summary: return specified page hero record
+      requestBody:
+        $ref: '#/components/schemas/Hero'
       responses:
         "200":
           description: OK
@@ -445,6 +613,20 @@ paths:
           description: Invalid ID supplied
         "404":
           description: Page hero not found
+        "405":
+          description: Validation exception
+  /api/create/videos:
+    get:
+      tags:
+      - BackOffice
+      summary: return ids of all existing videos
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Videos not found
         "405":
           description: Validation exception
   /api/show/video/{id}:
@@ -460,88 +642,6 @@ paths:
           description: Invalid ID supplied
         "404":
           description: Video not found
-        "405":
-          description: Validation exception
-  /update/reviews/{id}:
-    patch:
-      tags:
-      - BackOffice
-      summary: Update an existing New
-      requestBody:
-        $ref: '#/components/requestBodies/Reviews'
-      responses:
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: review not found
-        "405":
-          description: Validation exception
-        "200":
-          description: Update Done !
-  /update/banner/{id}:
-    patch:
-      tags:
-      - BackOffice
-      summary: Update an existing Banner
-      requestBody:
-        $ref: '#/components/requestBodies/Banner'
-      responses:
-        "200":
-          description: Rooms update
-        "404":
-          description: Room not found
-  /delete/reviews:
-    delete:
-      tags:
-      - BackOffice
-      summary: Delete an all reviews
-      requestBody:
-        $ref: '#/components/requestBodies/Reviews'
-      responses:
-        "200":
-          description: Reviews delete
-        "404":
-          description: Reviews not found
-  /delete/reviews/{id}:
-    delete:
-      tags:
-      - BackOffice
-      summary: Delete an existing reviews
-      requestBody:
-        $ref: '#/components/requestBodies/Reviews'
-      responses:
-        "200":
-          description: Reviews delete
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Reviews not found
-  /delete/banner:
-    delete:
-      tags:
-      - BackOffice
-      summary: Delete an all banner
-      requestBody:
-        $ref: '#/components/requestBodies/Banner'
-      responses:
-        "200":
-          description: Banner delete
-        "404":
-          description: Banner not found
-  /delete/banner/{id}:
-    delete:
-      tags:
-      - BackOffice
-      summary: Delete an existing banner
-      requestBody:
-        $ref: '#/components/requestBodies/Banner'
-      responses:
-        "200":
-          description: Banner delete
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Banner not found
         "405":
           description: Validation exception
   /update/video/{id}:
@@ -560,32 +660,6 @@ paths:
           description: video not found
         "405":
           description: Validation exception
-  /delete/footerLinks:
-    delete:
-      tags:
-      - BackOffice
-      summary: Delete an all footerLinks
-      requestBody:
-        $ref: '#/components/requestBodies/FooterLinks'
-      responses:
-        "200":
-          description: FooterLinks delete
-        "404":
-          description: FooterLinks not found
-  /delete/footerLinks/{id}:
-    delete:
-      tags:
-      - BackOffice
-      summary: Delete an existing footerLinks
-      requestBody:
-        $ref: '#/components/requestBodies/FooterLinks'
-      responses:
-        "200":
-          description: FooterLinks delete
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: FooterLinks not found
   /delete/video:
     delete:
       tags:
@@ -613,64 +687,6 @@ paths:
         "404":
           description: Video not found
         "405":
-          description: Validation exception
-  /update/footerlinks/{id}:
-    patch:
-      tags:
-      - BackOffice
-      summary: Update an existing footer link
-      requestBody:
-        $ref: '#/components/requestBodies/FooterLinks'
-      responses:
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: footerlink not found
-        "405":
-          description: Validation exception
-        "200":
-          description: Update Done !
-  /create/reviews/{id}:
-    post:
-      tags:
-      - BackOffice
-      summary: Create a new review
-      requestBody:
-        $ref: '#/components/requestBodies/Reviews'
-      responses:
-        "200":
-          description: review created
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Validation exception
-  /create/banner/{id}:
-    post:
-      tags:
-      - BackOffice
-      summary: Create a new banner
-      requestBody:
-        $ref: '#/components/requestBodies/Banner'
-      responses:
-        "200":
-          description: banner created
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: Validation exception
-  /create/footerLinks/{id}:
-    post:
-      tags:
-      - BackOffice
-      summary: Create a new footer Link
-      requestBody:
-        $ref: '#/components/requestBodies/FooterLinks'
-      responses:
-        "200":
-          description: footer Link created
-        "400":
-          description: Invalid ID supplied
-        "404":
           description: Validation exception
   /create/video/{id}:
     post:
@@ -744,7 +760,7 @@ components:
           type: string
         userAvatar:
           type: string
-    Banner:
+    Promobanner:
       type: object
       properties:
         id:
@@ -789,11 +805,11 @@ components:
           schema:
             $ref: '#/components/schemas/News'
       required: true
-    Banner:
+    Promobanner:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Banner'
+            $ref: '#/components/schemas/Promobanner'
       required: true
     Advantages:
       content:
