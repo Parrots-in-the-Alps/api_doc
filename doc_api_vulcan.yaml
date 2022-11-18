@@ -20,10 +20,10 @@ tags:
   description: Everything about the hotel News
 - name: Hero
   description: Everything about the hotel Hero
-- name: Footer Links
+- name: Footer
   description: Everything about the hotel Footer
-- name: Promotional banner
-  description: Everything about the hotel Promobanner
+- name: Header
+  description: Everything about the hotel Header
 - name: Video
   description: Everything about the hotel Video
 - name: CallToAction
@@ -123,7 +123,7 @@ paths:
           description: Rooms not found
         "405":
           description: Validation exception
-  /api/show/news:
+  /api/show/actualities:
     get:
       tags:
       - News
@@ -137,7 +137,7 @@ paths:
           description: News not found
         "405":
           description: Validation exception
-  /api/show/news/{id}:
+  /api/show/actuality/{id}:
     get:
       tags:
       - News
@@ -151,7 +151,7 @@ paths:
           description: News not found
         "405":
           description: Validation exception
-  /api/update/news/{id}:
+  /api/update/actuality/{id}:
     patch:
       tags:
       - News
@@ -167,7 +167,7 @@ paths:
           description: Validation exception
         "200":
           description: Update Done !
-  /api/delete/news:
+  /api/delete/actualities:
     delete:
       tags:
       - News
@@ -181,7 +181,7 @@ paths:
           description: News not found
         "405":
           description: Validation exception
-  /api/delete/news/{id}:
+  /api/delete/actuality/{id}:
     delete:
       tags:
       - News
@@ -195,7 +195,7 @@ paths:
           description: Invalid ID supplied
         "404":
           description: News not found
-  /api/create/news:
+  /api/create/actuality:
     post:
       tags:
       - News
@@ -391,109 +391,109 @@ paths:
           description: Validation exception
         "405":
           description: Validation exception
-  /api/show/promobanners:
+  /api/show/header:
     get:
       tags:
-      - Promotional banner
-      summary: return all existing promotional banners
+      - Header
+      summary: return all existing Header
       requestBody:
-        $ref: '#/components/requestBodies/Promobanner'
+        $ref: '#/components/requestBodies/Header'
       responses:
         "200":
           description: OK
         "400":
           description: Bad request
         "404":
-          description: Promotional banners not found
+          description: Header not found
         "405":
           description: Validation exception
-  /api/show/promobanner/{id}:
+  /api/show/header/{id}:
     get:
       tags:
-      - Promotional banner
-      summary:  return specified promotional banner 
+      - Header
+      summary:  return specified Header 
       requestBody:
-        $ref: '#/components/requestBodies/Promobanner'
+        $ref: '#/components/requestBodies/Header'
       responses:
         "200":
           description: OK
         "400":
           description: Invalid ID supplied
         "404":
-          description: Promotional banner not found
+          description: Header not found
         "405":
           description: Validation exception
-  /api/update/promobanner/{id}:
+  /api/update/header/{id}:
     patch:
       tags:
-      - Promotional banner
-      summary: Update specified promotional banner
+      - Header
+      summary: Update specified Header
       requestBody:
-        $ref: '#/components/requestBodies/Promobanner'
+        $ref: '#/components/requestBodies/Header'
       responses:
         "200":
           description: OK
         "400":
           description: Invalid ID supplied
         "404":
-          description: Promotional banner not found
+          description: Header not found
         "405":
           description: Validation exception
-  /api/delete/promobanners:
+  /api/delete/header:
     delete:
       tags:
-      - Promotional banner
-      summary: Delete all promotional banner
+      - Header
+      summary: Delete all Header
       requestBody:
-        $ref: '#/components/requestBodies/Promobanner'
+        $ref: '#/components/requestBodies/Header'
       responses:
         "200":
           description: OK
         "400":
           description: Bad request
         "404":
-          description: Promotional banner not found
+          description: Header not found
         "405":
           description: Validation exception
-  /api/delete/promobanner/{id}:
+  /api/delete/header/{id}:
     delete:
       tags:
-      - Promotional banner
-      summary: Delete specified promotional banner
+      - Header
+      summary: Delete specified Header
       requestBody:
-        $ref: '#/components/requestBodies/Promobanner'
+        $ref: '#/components/requestBodies/Header'
       responses:
         "200":
           description: OK
         "400":
           description: Invalid ID supplied
         "404":
-          description: Promotional banner not found
+          description: Header not found
         "405":
           description: Validation exception
-  /api/create/promobanner/:
+  /api/create/header/:
     post:
       tags:
-      - Promotional banner
-      summary: Create a new promotional banner
+      - Header
+      summary: Create a new Header
       requestBody:
-        $ref: '#/components/requestBodies/Promobanner'
+        $ref: '#/components/requestBodies/Header'
       responses:
         "200":
           description: OK :)
         "400":
           description: Bad request
         "404":
-          description: Validation exception
+          description: Header not found
         "405":
           description: Validation exception
-  /api/show/footerlinks:
+  /api/show/footer:
     get:
       tags:
-      - Footer Links
-      summary: return all existing page footer links
+      - Footer
+      summary: return all existing page footer
       requestBody:
-        $ref: '#/components/requestBodies/FooterLinks'
+        $ref: '#/components/requestBodies/Footer'
       responses:
         "200":
           description: OK
@@ -503,13 +503,13 @@ paths:
           description: Page footers not found
         "405":
           description: Validation exception
-  /api/show/footerlink/{id}:
+  /api/show/footer/{id}:
     get:
       tags:
-      - Footer Links
-      summary: return specified page footer link
+      - Footer
+      summary: return specified page footer
       requestBody:
-        $ref: '#/components/requestBodies/FooterLinks'
+        $ref: '#/components/requestBodies/Footer'
       responses:
         "200":
           description: OK
@@ -519,29 +519,29 @@ paths:
           description: Page footer not found
         "405":
           description: Validation exception
-  /api/update/footerlink/{id}:
+  /api/update/footer/{id}:
     patch:
       tags:
-      - Footer Links
-      summary: Update specified footer link
+      - Footer
+      summary: Update specified footer
       requestBody:
-        $ref: '#/components/requestBodies/FooterLinks'
+        $ref: '#/components/requestBodies/Footer'
       responses:
         "400":
           description: Invalid ID supplied
         "404":
-          description: footerlink not found
+          description: footer not found
         "405":
           description: Validation exception
         "200":
           description: OK
-  /api/delete/footerlinks:
+  /api/delete/footer:
     delete:
       tags:
-      - Footer Links
-      summary: Delete an all footer links
+      - Footer
+      summary: Delete an all footer
       requestBody:
-        $ref: '#/components/requestBodies/FooterLinks'
+        $ref: '#/components/requestBodies/Footer'
       responses:
         "200":
           description: OK :)
@@ -551,32 +551,32 @@ paths:
           description: Page footer not found
         "405":
           description: Validation exception
-  /api/delete/footerlink/{id}:
+  /api/delete/footer/{id}:
     delete:
       tags:
-      - Footer Links
-      summary: Delete specified footer Link
+      - Footer
+      summary: Delete specified footer
       requestBody:
-        $ref: '#/components/requestBodies/FooterLinks'
+        $ref: '#/components/requestBodies/Footer'
       responses:
         "200":
           description: OK
         "400":
           description: Invalid ID supplied
         "404":
-          description: FooterLinks not found
+          description: Footer not found
         "405":
           description: Validation exception
-  /api/create/footerlink/:
+  /api/create/footer/:
     post:
       tags:
-      - Footer Links
-      summary: Create a new footer Link
+      - Footer
+      summary: Create a new footer
       requestBody:
-        $ref: '#/components/requestBodies/FooterLinks'
+        $ref: '#/components/requestBodies/Footer'
       responses:
         "200":
-          description: footer Link created
+          description: footer created
         "400":
           description: Invalid ID supplied
         "404":
@@ -765,7 +765,7 @@ paths:
           description: Invalid ID supplied
         "404":
           description: Validation exception
-  /api/show/CallToAction:
+  /api/show/CallToActions:
     get:
       tags:
       - CallToAction
@@ -809,7 +809,7 @@ paths:
           description: CallToAction not found
         "405":
           description: Validation exception
-  /api/delete/CallToAction:
+  /api/delete/AllCallToActions:
     delete:
       tags:
       - CallToAction
@@ -847,6 +847,92 @@ paths:
       responses:
         "200":
           description: CallToAction created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
+  /api/show/Link:
+    get:
+      tags:
+      - Link
+      summary: return all existing Link
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Link not found
+        "405":
+          description: Validation exception
+  /api/show/Link/{id}:
+    get:
+      tags:
+      - Link
+      summary: return corresponding Link record 
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Link not found
+        "405":
+          description: Validation exception
+  /api/update/Link/{id}:
+    patch:
+      tags:
+      - Link
+      summary: Update an existing Link
+      requestBody:
+        $ref: '#/components/requestBodies/Link'
+      responses:
+        "200":
+          description: Link update
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Link not found
+        "405":
+          description: Validation exception
+  /api/delete/AllLink:
+    delete:
+      tags:
+      - Link
+      summary: Delete all Link
+      requestBody:
+        $ref: '#/components/requestBodies/Link'
+      responses:
+        "200":
+          description: Link delete
+        "404":
+          description: Link not found
+  /api/delete/Link/{id}:
+    delete:
+      tags:
+      - Link
+      summary: Delete an existing Link
+      requestBody:
+        $ref: '#/components/requestBodies/Link'
+      responses:
+        "200":
+          description: Link delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Link not found
+        "405":
+          description: Validation exception
+  /api/create/Link:
+    post:
+      tags:
+      - Link
+      summary: Create a new Link
+      requestBody:
+        $ref: '#/components/requestBodies/Link'
+      responses:
+        "200":
+          description: Link created
         "400":
           description: Invalid ID supplied
         "404":
@@ -909,14 +995,14 @@ components:
           type: string
         userAvatar:
           type: string
-    Promobanner:
+    Header:
       type: object
       properties:
         id:
           type: integer
         image:
           type: string
-    FooterLinks:
+    Footer:
       type: object
       properties:
         id:
@@ -950,6 +1036,15 @@ components:
           type: integer
         title:
           type: string
+    Link:
+      type: object
+      properties:
+        id:
+          type: integer
+        url:
+          type: string
+        name:
+          type: string
   requestBodies:
     Room:
       content:
@@ -963,11 +1058,11 @@ components:
           schema:
             $ref: '#/components/schemas/News'
       required: true
-    Promobanner:
+    Header:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Promobanner'
+            $ref: '#/components/schemas/Header'
       required: true
     Advantages:
       content:
@@ -981,11 +1076,11 @@ components:
           schema:
             $ref: '#/components/schemas/Reviews'
       required: true
-    FooterLinks:
+    Footer:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/FooterLinks'
+            $ref: '#/components/schemas/Footer'
       required: true
     Video:
       content:
@@ -1004,4 +1099,10 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/CallToAction'
+      required: true
+    Link:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Link'
       required: true 
