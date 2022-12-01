@@ -45,7 +45,22 @@ paths:
           description: Rooms not found
         "405":
           description: Validation exception
-  /api/room/{id}:
+    post:
+      tags:
+      - Rooms
+      summary: Creates a new room
+      requestBody:
+        $ref: '#/components/requestBodies/Room'
+      responses:
+        "200":
+          description: Room created
+        "400":
+          description: Bad request
+        "404":
+          description: Rooms not found
+        "405":
+          description: Validation exception
+  /api/rooms/{id}:
     get:
       tags:
       - Rooms
@@ -89,7 +104,6 @@ paths:
           description: Room not found
         "405":
           description: Validation exception
-  /delete/room/{id}:
     delete:
       tags:
       - Rooms
@@ -105,20 +119,18 @@ paths:
           description: Room not found
         "405":
           description: Validation exception
-  /api/create/room:
-    post:
+  /api/rooms/active:
+    get:
       tags:
-      - Rooms
-      summary: Creates a new room
-      requestBody:
-        $ref: '#/components/requestBodies/Room'
+      - Room
+      summary: returns rooms to display on front page, with attribute isActive set to true. 
       responses:
         "200":
-          description: Room created
+          description: OK
         "400":
-          description: Bad request
+          description: Invalid ID supplied
         "404":
-          description: Rooms not found
+          description: active rooms not found
         "405":
           description: Validation exception
   /api/actualities:
@@ -745,7 +757,7 @@ paths:
           description: Page footers not found
         "405":
           description: Validation exception
-  /api/show/videos:
+  /api/videos:
     get:
       tags:
       - Video
@@ -759,7 +771,20 @@ paths:
           description: Videos not found
         "405":
           description: Validation exception
-  /api/show/video/{id}:
+    post:
+      tags:
+      - Video
+      summary: Creates a new video
+      requestBody:
+        $ref: '#/components/requestBodies/Video'
+      responses:
+        "200":
+          description: video created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
+  /api/videos/{id}:
     get:
       tags:
       - Video
@@ -773,63 +798,66 @@ paths:
           description: Video not found
         "405":
           description: Validation exception
-  /api/update/video/{id}:
-    patch:
+    put:
       tags:
       - Video
-      summary: Update an existing Video
+      summary: Updates specified Video
       requestBody:
         $ref: '#/components/requestBodies/Video'
       responses:
         "200":
-          description: video update
+          description: video updated
         "400":
           description: Invalid ID supplied
         "404":
           description: video not found
         "405":
           description: Validation exception
-  /api/delete/videos:
-    delete:
+    patch:
       tags:
       - Video
-      summary: Delete an all video
+      summary: Updates specified Video
       requestBody:
         $ref: '#/components/requestBodies/Video'
       responses:
         "200":
-          description: Video delete
+          description: video updated
+        "400":
+          description: Invalid ID supplied
         "404":
-          description: Video not found
-  /api/delete/video/{id}:
+          description: video not found
+        "405":
+          description: Validation exception
     delete:
       tags:
       - Video
-      summary: Delete an existing video
+      summary: Deletes specified video
       requestBody:
         $ref: '#/components/requestBodies/Video'
       responses:
         "200":
-          description: Video delete
+          description: Video deleted
         "400":
           description: Invalid ID supplied
         "404":
           description: Video not found
         "405":
           description: Validation exception
-  /api/create/video:
-    post:
+  /api/videos/active:
+    get:
       tags:
       - Video
-      summary: Create a new video
+      summary: returns videos to display on front page, with attribute isActive set to true.
       requestBody:
-        $ref: '#/components/requestBodies/Video'
+        $ref: '#/components/requestBodies/Footer'
       responses:
         "200":
-          description: video created
+          description: OK
         "400":
-          description: Invalid ID supplied
+          description: Bad request
         "404":
+          description: Videos not found
+        "405":
           description: Validation exception
   /api/links:
     get:
