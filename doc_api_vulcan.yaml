@@ -12,28 +12,931 @@ servers:
 tags:
 - name: Rooms
   description: Everything about the hotel rooms
-- name: BackOffice
-  description: Access and modifiy every thing on the landing page
+- name: Reviews
+  description: Everything about the hotel reviews
+- name: Advantages
+  description: Everything about the hotel Advantages
+- name: News
+  description: Everything about the hotel News
+- name: Hero
+  description: Everything about the hotel Hero
+- name: Footer
+  description: Everything about the hotel Footer
+- name: Header
+  description: Everything about the hotel Header
+- name: Video
+  description: Everything about the hotel Video
+- name: CallToAction
+  description: Everything about the hotel CTA
 paths:
-  /room/{id}/update:
-    put:
+  /api/show/rooms:
+    get:
       tags:
-      - BackOffice
-      summary: Update an existing room
-      operationId: updatePet
+      - Rooms
+      summary: return all existing hostel rooms
       requestBody:
         $ref: '#/components/requestBodies/Room'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Rooms not found
+        "405":
+          description: Validation exception
+  /api/show/room/{id}:
+    get:
+      tags:
+      - Rooms
+      summary: return corresponding room record 
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Room not found
+        "405":
+          description: Validation exception
+  /api/update/room/{id}:
+    patch:
+      tags:
+      - Rooms
+      summary: Update an existing room
+      requestBody:
+        $ref: '#/components/requestBodies/Room'
+      responses:
+        "200":
+          description: Room update !
+        "400":
+          description: Bad request
+        "404":
+          description: Room not found
+        "405":
+          description: Validation exception
+  /api/delete/rooms:
+    delete:
+      tags:
+      - Rooms
+      summary: Delete all rooms
+      requestBody:
+        $ref: '#/components/requestBodies/Room'
+      responses:
+        "200":
+          description: all rooms deleted !
+        "400":
+          description: Bad request
+        "404":
+          description: Rooms not found
+        "405":
+          description: Validation exception
+  /delete/room/{id}:
+    delete:
+      tags:
+      - Rooms
+      summary: Delete an existing room
+      requestBody:
+        $ref: '#/components/requestBodies/Room'
+      responses:
+        "200":
+          description: Room delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Room not found
+        "405":
+          description: Validation exception
+  /api/create/room:
+    post:
+      tags:
+      - Rooms
+      summary: Create a new room
+      requestBody:
+        $ref: '#/components/requestBodies/Room'
+      responses:
+        "200":
+          description: Room created
+        "400":
+          description: Bad request
+        "404":
+          description: Rooms not found
+        "405":
+          description: Validation exception
+  /api/show/actualities:
+    get:
+      tags:
+      - News
+      summary: return ids of all existing news
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: News not found
+        "405":
+          description: Validation exception
+  /api/show/actuality/{id}:
+    get:
+      tags:
+      - News
+      summary: return corresponding news record 
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: News not found
+        "405":
+          description: Validation exception
+  /api/update/actuality/{id}:
+    patch:
+      tags:
+      - News
+      summary: Update an existing New
+      requestBody:
+        $ref: '#/components/requestBodies/News'
       responses:
         "400":
           description: Invalid ID supplied
         "404":
-          description: Pet not found
+          description: News not found
         "405":
           description: Validation exception
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+        "200":
+          description: Update Done !
+  /api/delete/actualities:
+    delete:
+      tags:
+      - News
+      summary: Delete all news
+      requestBody:
+        $ref: '#/components/requestBodies/News'
+      responses:
+        "200":
+          description: News delete
+        "404":
+          description: News not found
+        "405":
+          description: Validation exception
+  /api/delete/actuality/{id}:
+    delete:
+      tags:
+      - News
+      summary: Delete an existing news
+      requestBody:
+        $ref: '#/components/requestBodies/News'
+      responses:
+        "200":
+          description: News delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: News not found
+  /api/create/actuality:
+    post:
+      tags:
+      - News
+      summary: Create a new news
+      requestBody:
+        $ref: '#/components/requestBodies/News'
+      responses:
+        "200":
+          description: news created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
+  /api/show/advantages:
+    get:
+      tags:
+      - Advantages
+      summary: return ids of all existing hostel advantages
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Advantages not found
+        "405":
+          description: Validation exception
+  /api/show/advantage/{id}:
+    get:
+      tags:
+      - Advantages
+      summary: return corresponding advantage 
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Advantage not found
+        "405":
+          description: Validation exception  
+  /api/update/advantage/{id}:
+    patch:
+      tags:
+      - Advantages
+      summary: Update an existing Advantage
+      requestBody:
+        $ref: '#/components/requestBodies/Advantages'
+      responses:
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: review not found
+        "405":
+          description: Validation exception
+        "200":
+          description: Update Done !
+  /api/delete/advantages:
+    delete:
+      tags:
+      - Advantages
+      summary: Delete an all advantages
+      requestBody:
+        $ref: '#/components/requestBodies/Advantages'
+      responses:
+        "200":
+          description: Advantages delete
+        "404":
+          description: Advantages not found
+  /api/delete/advantage/{id}:
+    delete:
+      tags:
+      - Advantages
+      summary: Delete an existing advantages
+      requestBody:
+        $ref: '#/components/requestBodies/Advantages'
+      responses:
+        "200":
+          description: Advantages delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Advantages not found
+  /api/create/advantage:
+    post:
+      tags:
+      - Advantages
+      summary: Create a new advantage
+      requestBody:
+        $ref: '#/components/requestBodies/Advantages'
+      responses:
+        "200":
+          description: advantage created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Reviews not found
+        "405":
+          description: Validation exception
+  /api/show/reviews:
+    get:
+      tags:
+      - Reviews
+      summary: return all existing customer reviews
+      requestBody:
+        $ref: '#/components/requestBodies/Reviews'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Reviews not found
+        "405":
+          description: Validation exception
+  /api/show/review/{id}:
+    get:
+      tags:
+      - Reviews
+      summary: return corresponding customer review record
+      requestBody:
+        $ref: '#/components/requestBodies/Reviews'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Customer review not found
+        "405":
+          description: Validation exception
+  /api/update/review/{id}:
+    patch:
+      tags:
+      - Reviews
+      summary: Update an existing customer review
+      requestBody:
+        $ref: '#/components/requestBodies/Reviews'
+      responses:
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: review not found
+        "405":
+          description: Validation exception
+        "200":
+          description: Update Done !
+  /api/delete/reviews:
+    delete:
+      tags:
+      - Reviews
+      summary: Delete an all reviews
+      requestBody:
+        $ref: '#/components/requestBodies/Reviews'
+      responses:
+        "200":
+          description: Reviews delete
+        "400":
+          description: Bad request
+        "404":
+          description: Reviews not found
+        "405":
+          description: Validation exception
+  /api/delete/review/{id}:
+    delete:
+      tags:
+      - Reviews
+      summary: Delete an existing customer review
+      requestBody:
+        $ref: '#/components/requestBodies/Reviews'
+      responses:
+        "200":
+          description: Reviews delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Reviews not found
+        "405":
+          description: Validation exception
+  /api/create/review/{id}:
+    post:
+      tags:
+      - Reviews
+      summary: Create a new customer review
+      requestBody:
+        $ref: '#/components/requestBodies/Reviews'
+      responses:
+        "200":
+          description: review created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
+        "405":
+          description: Validation exception
+  /api/show/header:
+    get:
+      tags:
+      - Header
+      summary: return all existing Header
+      requestBody:
+        $ref: '#/components/requestBodies/Header'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Header not found
+        "405":
+          description: Validation exception
+  /api/show/header/{id}:
+    get:
+      tags:
+      - Header
+      summary:  return specified Header 
+      requestBody:
+        $ref: '#/components/requestBodies/Header'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Header not found
+        "405":
+          description: Validation exception
+  /api/update/header/{id}:
+    patch:
+      tags:
+      - Header
+      summary: Update specified Header
+      requestBody:
+        $ref: '#/components/requestBodies/Header'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Header not found
+        "405":
+          description: Validation exception
+  /api/delete/header:
+    delete:
+      tags:
+      - Header
+      summary: Delete all Header
+      requestBody:
+        $ref: '#/components/requestBodies/Header'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Header not found
+        "405":
+          description: Validation exception
+  /api/delete/header/{id}:
+    delete:
+      tags:
+      - Header
+      summary: Delete specified Header
+      requestBody:
+        $ref: '#/components/requestBodies/Header'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Header not found
+        "405":
+          description: Validation exception
+  /api/create/header/:
+    post:
+      tags:
+      - Header
+      summary: Create a new Header
+      requestBody:
+        $ref: '#/components/requestBodies/Header'
+      responses:
+        "200":
+          description: OK :)
+        "400":
+          description: Bad request
+        "404":
+          description: Header not found
+        "405":
+          description: Validation exception
+  /api/show/footer:
+    get:
+      tags:
+      - Footer
+      summary: return all existing page footer
+      requestBody:
+        $ref: '#/components/requestBodies/Footer'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Page footers not found
+        "405":
+          description: Validation exception
+  /api/show/footer/{id}:
+    get:
+      tags:
+      - Footer
+      summary: return specified page footer
+      requestBody:
+        $ref: '#/components/requestBodies/Footer'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Page footer not found
+        "405":
+          description: Validation exception
+  /api/update/footer/{id}:
+    patch:
+      tags:
+      - Footer
+      summary: Update specified footer
+      requestBody:
+        $ref: '#/components/requestBodies/Footer'
+      responses:
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: footer not found
+        "405":
+          description: Validation exception
+        "200":
+          description: OK
+  /api/delete/footer:
+    delete:
+      tags:
+      - Footer
+      summary: Delete an all footer
+      requestBody:
+        $ref: '#/components/requestBodies/Footer'
+      responses:
+        "200":
+          description: OK :)
+        "400":
+          description: Bad request
+        "404":
+          description: Page footer not found
+        "405":
+          description: Validation exception
+  /api/delete/footer/{id}:
+    delete:
+      tags:
+      - Footer
+      summary: Delete specified footer
+      requestBody:
+        $ref: '#/components/requestBodies/Footer'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Footer not found
+        "405":
+          description: Validation exception
+  /api/create/footer/:
+    post:
+      tags:
+      - Footer
+      summary: Create a new footer
+      requestBody:
+        $ref: '#/components/requestBodies/Footer'
+      responses:
+        "200":
+          description: footer created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
+        "405":
+          description: Validation exception
+  /api/show/heroes:
+    get:
+      tags:
+      - Hero
+      summary: return all existing page heroes
+      requestBody:
+        $ref: '#/components/schemas/Hero' 
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Page heroes not found
+        "405":
+          description: Validation exception
+  /api/show/hero/{id}:
+    get:
+      tags:
+      - Hero
+      summary: return specified page hero record
+      requestBody:
+        $ref: '#/components/schemas/Hero'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Page hero not found
+        "405":
+          description: Validation exception
+  /api/update/hero/{id}:
+    patch:
+      tags:
+      - Hero
+      summary: update specific hero
+      requestBody:
+        $ref: '#/components/schemas/Hero'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Page hero not found
+        "405":
+          description: Validation exception
+  /api/delete/heroes:
+    delete:
+      tags:
+      - Hero
+      summary: delete all heroes
+      requestBody:
+        $ref: '#/components/schemas/Hero'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Page hero not found
+        "405":
+          description: Validation exception
+  /api/delete/hero/{id}:
+    delete:
+      tags:
+      - Hero
+      summary: delete specific hero
+      requestBody:
+        $ref: '#/components/schemas/Hero'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Page hero not found
+        "405":
+          description: Validation exception
+  /api/create/hero:
+    post:
+      tags:
+      - Hero
+      summary: create a new hero
+      requestBody:
+        $ref: '#/components/schemas/Hero'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Page hero not found
+        "405":
+          description: Validation exception
+  /api/show/videos:
+    get:
+      tags:
+      - Video
+      summary: return all existing videos
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Videos not found
+        "405":
+          description: Validation exception
+  /api/show/video/{id}:
+    get:
+      tags:
+      - Video
+      summary: return corresponding video record
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Video not found
+        "405":
+          description: Validation exception
+  /api/update/video/{id}:
+    patch:
+      tags:
+      - Video
+      summary: Update an existing Video
+      requestBody:
+        $ref: '#/components/requestBodies/Video'
+      responses:
+        "200":
+          description: video update
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: video not found
+        "405":
+          description: Validation exception
+  /api/delete/videos:
+    delete:
+      tags:
+      - Video
+      summary: Delete an all video
+      requestBody:
+        $ref: '#/components/requestBodies/Video'
+      responses:
+        "200":
+          description: Video delete
+        "404":
+          description: Video not found
+  /api/delete/video/{id}:
+    delete:
+      tags:
+      - Video
+      summary: Delete an existing video
+      requestBody:
+        $ref: '#/components/requestBodies/Video'
+      responses:
+        "200":
+          description: Video delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Video not found
+        "405":
+          description: Validation exception
+  /api/create/video:
+    post:
+      tags:
+      - Video
+      summary: Create a new video
+      requestBody:
+        $ref: '#/components/requestBodies/Video'
+      responses:
+        "200":
+          description: video created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
+  /api/show/CallToActions:
+    get:
+      tags:
+      - CallToAction
+      summary: return all existing CallToAction
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: CallToAction not found
+        "405":
+          description: Validation exception
+  /api/show/CallToAction/{id}:
+    get:
+      tags:
+      - CallToAction
+      summary: return corresponding CallToAction record 
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: CallToAction not found
+        "405":
+          description: Validation exception
+  /api/update/CallToAction/{id}:
+    patch:
+      tags:
+      - CallToAction
+      summary: Update an existing CallToAction
+      requestBody:
+        $ref: '#/components/requestBodies/CallToAction'
+      responses:
+        "200":
+          description: CallToAction update
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: CallToAction not found
+        "405":
+          description: Validation exception
+  /api/delete/AllCallToActions:
+    delete:
+      tags:
+      - CallToAction
+      summary: Delete all CallToActions
+      requestBody:
+        $ref: '#/components/requestBodies/CallToAction'
+      responses:
+        "200":
+          description: CallToAction delete
+        "404":
+          description: CallToAction not found
+  /api/delete/CallToAction/{id}:
+    delete:
+      tags:
+      - CallToAction
+      summary: Delete an existing CallToAction
+      requestBody:
+        $ref: '#/components/requestBodies/CallToAction'
+      responses:
+        "200":
+          description: Video delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Video not found
+        "405":
+          description: Validation exception
+  /api/create/CallToAction:
+    post:
+      tags:
+      - CallToAction
+      summary: Create a new CallToAction
+      requestBody:
+        $ref: '#/components/requestBodies/CallToAction'
+      responses:
+        "200":
+          description: CallToAction created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
+  /api/show/Link:
+    get:
+      tags:
+      - Link
+      summary: return all existing Link
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Link not found
+        "405":
+          description: Validation exception
+  /api/show/Link/{id}:
+    get:
+      tags:
+      - Link
+      summary: return corresponding Link record 
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Link not found
+        "405":
+          description: Validation exception
+  /api/update/Link/{id}:
+    patch:
+      tags:
+      - Link
+      summary: Update an existing Link
+      requestBody:
+        $ref: '#/components/requestBodies/Link'
+      responses:
+        "200":
+          description: Link update
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Link not found
+        "405":
+          description: Validation exception
+  /api/delete/AllLink:
+    delete:
+      tags:
+      - Link
+      summary: Delete all Link
+      requestBody:
+        $ref: '#/components/requestBodies/Link'
+      responses:
+        "200":
+          description: Link delete
+        "404":
+          description: Link not found
+  /api/delete/Link/{id}:
+    delete:
+      tags:
+      - Link
+      summary: Delete an existing Link
+      requestBody:
+        $ref: '#/components/requestBodies/Link'
+      responses:
+        "200":
+          description: Link delete
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Link not found
+        "405":
+          description: Validation exception
+  /api/create/Link:
+    post:
+      tags:
+      - Link
+      summary: Create a new Link
+      requestBody:
+        $ref: '#/components/requestBodies/Link'
+      responses:
+        "200":
+          description: Link created
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Validation exception
 components: 
   schemas:
     Room:
@@ -92,14 +995,14 @@ components:
           type: string
         userAvatar:
           type: string
-    Banner:
+    Header:
       type: object
       properties:
         id:
           type: integer
         image:
           type: string
-    FooterLinks:
+    Footer:
       type: object
       properties:
         id:
@@ -112,6 +1015,35 @@ components:
         id:
           type: integer
         link:
+          type: string
+    Hero:
+      type: object
+      properties:
+        id:
+          type: integer
+        image:
+          type: string
+        slogan:
+          type: string
+        image_logo:
+          type: string
+    CallToAction:
+      type: object
+      properties:
+        id:
+          type: integer
+        action:
+          type: integer
+        title:
+          type: string
+    Link:
+      type: object
+      properties:
+        id:
+          type: integer
+        url:
+          type: string
+        name:
           type: string
   requestBodies:
     Room:
@@ -126,11 +1058,11 @@ components:
           schema:
             $ref: '#/components/schemas/News'
       required: true
-    Banner:
+    Header:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Banner'
+            $ref: '#/components/schemas/Header'
       required: true
     Advantages:
       content:
@@ -144,11 +1076,11 @@ components:
           schema:
             $ref: '#/components/schemas/Reviews'
       required: true
-    FooterLinks:
+    Footer:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/FooterLinks'
+            $ref: '#/components/schemas/Footer'
       required: true
     Video:
       content:
@@ -156,4 +1088,21 @@ components:
           schema:
             $ref: '#/components/schemas/Video'
       required: true
-        
+    Hero:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Hero'
+      required: true 
+    CallToAction:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CallToAction'
+      required: true
+    Link:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Link'
+      required: true 
