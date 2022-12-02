@@ -14,8 +14,8 @@ tags:
   description: Everything about the hotel rooms
 - name: Reviews
   description: Everything about the hotel reviews
-- name: Advantages
-  description: Everything about the hotel Advantages
+- name: Services
+  description: Everything about the hotel Services
 - name: Actualities
   description: Everything about the hotel News
 - name: Hero
@@ -231,55 +231,55 @@ paths:
           description: active actualities not found
         "405":
           description: Validation exception
-  /api/advantages:
+  /api/services:
     get:
       tags:
-      - Advantages
-      summary: returns all existing hotel advantages
+      - Services
+      summary: returns all existing hotel services
       responses:
         "200":
           description: OK
         "400":
           description: Bad request
         "404":
-          description: Advantages not found
+          description: Services not found
         "405":
           description: Validation exception
     post:
       tags:
-      - Advantages
-      summary: Creates a new advantage
+      - Services
+      summary: Creates a new service
       requestBody:
-        $ref: '#/components/requestBodies/Advantages'
+        $ref: '#/components/requestBodies/Services'
       responses:
         "200":
-          description: advantage created
+          description: service created
         "400":
           description: Bad Request
         "404":
-          description: Advantage not found
+          description: service not found
         "405":
           description: Validation exception
-  /api/advantages/{id}:
+  /api/services/{id}:
     get:
       tags:
-      - Advantages
-      summary: returns specified advantage 
+      - Services
+      summary: returns specified service 
       responses:
         "200":
           description: OK
         "400":
           description: Invalid ID supplied
         "404":
-          description: Advantage not found
+          description: service not found
         "405":
           description: Validation exception
     put:
       tags:
-      - Advantages
-      summary: Updates specified Advantage
+      - Services
+      summary: Updates specified service
       requestBody:
-        $ref: '#/components/requestBodies/Advantages'
+        $ref: '#/components/requestBodies/Services'
       responses:
         "400":
           description: Invalid ID supplied
@@ -291,10 +291,10 @@ paths:
           description: Update Done !
     patch:
       tags:
-      - Advantages
-      summary: Updates specified Advantage
+      - Services
+      summary: Updates specified service
       requestBody:
-        $ref: '#/components/requestBodies/Advantages'
+        $ref: '#/components/requestBodies/Services'
       responses:
         "400":
           description: Invalid ID supplied
@@ -306,29 +306,29 @@ paths:
           description: Update Done !
     delete:
       tags:
-      - Advantages
-      summary: Deletes specified advantage
+      - Services
+      summary: Deletes specified service
       requestBody:
-        $ref: '#/components/requestBodies/Advantages'
+        $ref: '#/components/requestBodies/Services'
       responses:
         "200":
-          description: Advantage deleted
+          description: service deleted
         "404":
-          description: Advantage not found
-  /api/advantages/active:
+          description: service not found
+  /api/services/active:
     get:
       tags:
-      - Advantages
-      summary: returns advantages to display on front page, with attribute isActive set to true.
+      - Services
+      summary: returns services to display on front page, with attribute isActive set to true.
       requestBody:
-        $ref: '#/components/requestBodies/Advantages'
+        $ref: '#/components/requestBodies/Services'
       responses:
         "200":
           description: OK
         "400":
           description: Bad request
         "404":
-          description: Advantages not found
+          description: Services not found
   /api/reviews:
     get:
       tags:
@@ -427,14 +427,14 @@ paths:
       - Reviews
       summary: returns reviews to display on front page, with attribute isActive set to true.
       requestBody:
-        $ref: '#/components/requestBodies/Advantages'
+        $ref: '#/components/requestBodies/Services'
       responses:
         "200":
           description: OK
         "400":
           description: Bad request
         "404":
-          description: Advantages not found
+          description: Services not found
   /api/headers:
     get:
       tags:
@@ -533,14 +533,14 @@ paths:
       - Header
       summary: returns header to display on front page, with attribute isActive set to true.
       requestBody:
-        $ref: '#/components/requestBodies/Advantages'
+        $ref: '#/components/requestBodies/Services'
       responses:
         "200":
           description: OK
         "400":
           description: Bad request
         "404":
-          description: Advantages not found
+          description: Services not found
   /api/footers:
     get:
       tags:
@@ -1079,7 +1079,7 @@ components:
           type: string
         date:
           type: string
-    Advantages:
+    Services:
       type: object
       properties:
         id:
@@ -1172,11 +1172,11 @@ components:
           schema:
             $ref: '#/components/schemas/Header'
       required: true
-    Advantages:
+    Services:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Advantages'
+            $ref: '#/components/schemas/Services'
       required: true
     Reviews:
       content:
