@@ -122,7 +122,7 @@ paths:
   /api/rooms/active:
     get:
       tags:
-      - Room
+      - Rooms
       summary: returns rooms to display on front page, with attribute isActive set to true. 
       responses:
         "200":
