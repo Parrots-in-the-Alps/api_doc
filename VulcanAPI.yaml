@@ -1,0 +1,1349 @@
+openapi: 3.0.0
+servers: []
+info:
+  description: C'est une api qui à pour but de créer un site d'Hotel avec tout un backoffice qui permet d'administrer le site via un WYSIWYG
+  version: "2.0.1"
+  title: Vulcan API
+  contact:
+    email: vulcan@hotel.mom
+tags:
+- name: Rooms
+  description: Everything about the hotel rooms
+- name: Reviews
+  description: Everything about the hotel reviews
+- name: Services
+  description: Everything about the hotel services
+- name: Actualities
+  description: Everything about the hotel actualities
+- name: Heroes
+  description: Everything about the hotel heroes
+- name: Footers
+  description: Everything about the hotel footers
+- name: Headers
+  description: Everything about the hotel headers
+- name: Videos
+  description: Everything about the hotel videos
+paths:
+  /api/rooms:
+    get:
+      tags:
+      - Rooms
+      operationId: getRooms
+      summary: Returns all existing rooms
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    post:
+      tags:
+      - Rooms
+      operationId: createRoom
+      summary: Creates a new room
+      requestBody:
+        $ref: '#/components/requestBodies/Room'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/rooms/{id}:
+    get:
+      tags:
+      - Rooms
+      operationId: getRoomById
+      summary: Returns specified room
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the room
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    put:
+      tags:
+      - Rooms
+      summary: Updates specified room
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the room
+      requestBody:
+        $ref: '#/components/requestBodies/Room'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    patch:
+      tags:
+      - Rooms
+      summary: Updates specified room
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the room
+      requestBody:
+        $ref: '#/components/requestBodies/Room'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    delete:
+      tags:
+      - Rooms
+      summary: Deletes specified room
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the room
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/rooms/active:
+    get:
+      tags:
+      - Rooms
+      summary: Returns rooms to display on front page, with attribute isActive set to true.
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: active rooms not found
+        "405":
+          description: Validation exception
+  /api/actualities:
+    get:
+      tags:
+      - Actualities
+      summary: Returns all existing actualities.
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    post:
+      tags:
+      - Actualities
+      summary: Creates a new actuality
+      requestBody:
+        $ref: '#/components/requestBodies/Actuality'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/actualities/{id}:
+    get:
+      tags:
+      - Actualities
+      summary: Returns specified actuality.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the actuality
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    put:
+      tags:
+      - Actualities
+      summary: Updates specified actuality.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the actuality
+      requestBody:
+        $ref: '#/components/requestBodies/Actuality'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    patch:
+      tags:
+      - Actualities
+      summary: Updates specified actuality.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the actuality
+      requestBody:
+        $ref: '#/components/requestBodies/Actuality'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    delete:
+      tags:
+      - Actualities
+      summary: Deletes specified actuality
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the actuality
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/actualities/active:
+    get:
+      tags:
+      - Actualities
+      summary: Returns actualities to display on front page, with attribute isActive set to true. 
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/services:
+    get:
+      tags:
+      - Services
+      summary: Returns all existing hotel services
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    post:
+      tags:
+      - Services
+      summary: Creates a new service
+      requestBody:
+        $ref: '#/components/requestBodies/Service'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/services/{id}:
+    get:
+      tags:
+      - Services
+      summary: Returns specified service
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the service
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    put:
+      tags:
+      - Services
+      summary: Updates specified service
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the service
+      requestBody:
+        $ref: '#/components/requestBodies/Service'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    patch:
+      tags:
+      - Services
+      summary: Updates specified service
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the service
+      requestBody:
+        $ref: '#/components/requestBodies/Service'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    delete:
+      tags:
+      - Services
+      summary: Deletes specified service
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the service
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/services/active:
+    get:
+      tags:
+      - Services
+      summary: Returns services to display on front page, with attribute isActive set to true.
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/reviews:
+    get:
+      tags:
+      - Reviews
+      summary: Returns all existing customer reviews
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    post:
+      tags:
+      - Reviews
+      summary: Creates a new customer review
+      requestBody:
+        $ref: '#/components/requestBodies/Review'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/reviews/{id}:
+    get:
+      tags:
+      - Reviews
+      summary: Returns specified customer review
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the review
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    put:
+      tags:
+      - Reviews
+      summary: Updates specified customer review
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the review
+      requestBody:
+        $ref: '#/components/requestBodies/Review'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    patch:
+      tags:
+      - Reviews
+      summary: Updates specified customer review
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the review
+      requestBody:
+        $ref: '#/components/requestBodies/Review'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    delete:
+      tags:
+      - Reviews
+      summary: Deletes specified customer review
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the review
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/reviews/active:
+    get:
+      tags:
+      - Reviews
+      summary: Returns reviews to display on front page, with attribute isActive set to true.
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/headers:
+    get:
+      tags:
+      - Headers
+      summary: Returns all existing Header
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    post:
+      tags:
+      - Headers
+      summary: Creates a new Header
+      requestBody:
+        $ref: '#/components/requestBodies/Header'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/headers/{id}:
+    get:
+      tags:
+      - Headers
+      summary:  Returns specified Header
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the header
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    put:
+      tags:
+      - Headers
+      summary: Updates specified Header
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the header
+      requestBody:
+        $ref: '#/components/requestBodies/Header'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    patch:
+      tags:
+      - Headers
+      summary: Updates specified Header
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the header
+      requestBody:
+        $ref: '#/components/requestBodies/Header'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    delete:
+      tags:
+      - Headers
+      summary: Deletes specified Header
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the header
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/headers/active:
+    get:
+      tags:
+      - Headers
+      summary: Returns header to display on front page, with attribute isActive set to true.
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/footers:
+    get:
+      tags:
+      - Footers
+      summary: Returns all existing page footers
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Page footers not found
+        "405":
+          description: Validation exception
+    post:
+      tags:
+      - Footers
+      summary: Creates a new footer
+      requestBody:
+        $ref: '#/components/requestBodies/Footer'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/footers/{id}:
+    get:
+      tags:
+      - Footers
+      summary: Returns specified page footer
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the footer
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    put:
+      tags:
+      - Footers
+      summary: Updates specified footer
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the footer
+      requestBody:
+        $ref: '#/components/requestBodies/Footer'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    patch:
+      tags:
+      - Footers
+      summary: Updates specified footer
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the footer
+      requestBody:
+        $ref: '#/components/requestBodies/Footer'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    delete:
+      tags:
+      - Footers
+      summary: Deletes specified footer
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the footer
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/footers/active:
+    get:
+      tags:
+      - Footers
+      summary: Returns footer to display on front page, with attribute isActive set to true.
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/heroes:
+    get:
+      tags:
+      - Heroes
+      summary: Returns all existing page heroes
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    post:
+      tags:
+      - Heroes
+      summary: creates a new hero
+      requestBody:
+        $ref: '#/components/requestBodies/Hero'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/heroes/{id}:
+    get:
+      tags:
+      - Heroes
+      summary: Returns specified page hero record
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the hero
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    put:
+      tags:
+      - Heroes
+      summary: Updates specified hero
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the hero
+      requestBody:
+        $ref: '#/components/requestBodies/Hero'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    patch:
+      tags:
+      - Heroes
+      summary: Updates specified hero
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the hero
+      requestBody:
+        $ref: '#/components/requestBodies/Hero'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    delete:
+      tags:
+      - Heroes
+      summary: Deletes specified hero
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the hero
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/heroes/active:
+    get:
+      tags:
+      - Heroes
+      summary: Returns hero to display on front page, with attribute isActive set to true.
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/videos:
+    get:
+      tags:
+      - Videos
+      summary: Returns specified videos
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    post:
+      tags:
+      - Videos
+      summary: Creates a new video
+      requestBody:
+        $ref: '#/components/requestBodies/Video'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/videos/{id}:
+    get:
+      tags:
+      - Videos
+      summary: Returns specified video record
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the video
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    put:
+      tags:
+      - Videos
+      summary: Updates specified Video
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the video
+      requestBody:
+        $ref: '#/components/requestBodies/Video'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    patch:
+      tags:
+      - Videos
+      summary: Updates specified Video
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the video
+      requestBody:
+        $ref: '#/components/requestBodies/Video'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    delete:
+      tags:
+      - Videos
+      summary: Deletes specified video
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the video
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/videos/active:
+    get:
+      tags:
+      - Videos
+      summary: Returns videos to display on front page, with attribute isActive set to true.
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/links:
+    get:
+      tags:
+      - Links
+      summary: Return all existing Link
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    post:
+      tags:
+      - Links
+      summary: Creates a new Link
+      requestBody:
+        $ref: '#/components/requestBodies/Link'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/links/{id}:
+    get:
+      tags:
+      - Links
+      summary: Returns specified Link record 
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the link
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    put:
+      tags:
+      - Links
+      summary: Updates specified Link
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the link
+      requestBody:
+        $ref: '#/components/requestBodies/Link'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    patch:
+      tags:
+      - Links
+      summary: Updates specified Link
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the link
+      requestBody:
+        $ref: '#/components/requestBodies/Link'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+    delete:
+      tags:
+      - Links
+      summary: Delete specified Link
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the link
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+  /api/links/active:
+    get:
+      tags:
+      - Links
+      summary: Returns links to display on front page, with attribute isActive set to true.
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "404":
+          description: Not Found
+        "405":
+          description: Method Not Allowed
+components: 
+  schemas:
+    Room:
+      type: object
+      properties:
+        id:
+          type: integer
+        number: 
+          type: integer
+        type:
+          type: object
+        capacity:
+          type: integer
+        price:
+          type: integer
+        booked:
+          type: boolean
+        image:
+          type: string
+        description:
+          type: object
+    Actuality:
+      type: object
+      properties:
+        id:
+          type: integer
+        title: 
+          type: object
+        image:
+          type: string
+        description:
+          type: object
+        start_date:
+          type: object
+        end_date:
+          type: object
+    Service:
+      type: object
+      properties:
+        id:
+          type: integer
+        image_icon: 
+          type: string
+        title:
+          type: object
+        description:
+          type: object
+        price:
+          type: integer 
+    Review:
+      type: object
+      properties:
+        id:
+          type: integer
+        user_name: 
+          type: string
+        image_user_avatar:
+          type: string
+        rating:
+          type: integer
+        commentary:
+          type: string
+        creation_date:
+          type: object
+    Header:
+      type: object
+      properties:
+        id:
+          type: integer
+        banner_image:
+          type: string 
+    Footer:
+      type: object
+      properties:
+        id:
+          type: integer
+        phone_number:
+          type: integer
+        mail:
+          type: string
+        image_logo:
+          type: string
+    Video:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: object
+        video_link:
+          type: string
+        description:
+          type: object
+    Hero:
+      type: object
+      properties:
+        id:
+          type: integer
+        image:
+          type: string
+        slogan:
+          type: object
+        image_logo:
+          type: string
+    Link:
+      type: object
+      properties:
+        id:
+          type: integer
+        url:
+          type: string
+        name:
+          type: object
+  requestBodies:
+    Room:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Room'
+      required: true
+    Actuality:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Actuality'
+      required: true
+    Header:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Header'
+      required: true
+    Service:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Service'
+      required: true
+    Review:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Review'
+      required: true
+    Footer:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Footer'
+      required: true
+    Video:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Video'
+      required: true
+    Hero:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Hero'
+      required: true
+    Link:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Link'
+      required: true
